@@ -25,6 +25,10 @@ get '/visit' do
  erb :visit
 end
 
+get '/contacts' do
+	erb :contacts
+end
+
 get '/' do
 	
 	erb :index
@@ -41,4 +45,13 @@ post '/visit' do
 
 	erb :visit
 
+end
+
+post '/contacts' do
+	@email = params[:email]
+	@message = params[:message]
+
+	Contact.create :email => @email, :message => @message
+
+	erb :contacts
 end
